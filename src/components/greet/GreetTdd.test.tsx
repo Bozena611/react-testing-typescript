@@ -6,14 +6,26 @@
 import { render, screen } from "@testing-library/react";
 import { GreetTdd } from "./GreetTdd";
 
-test('GreetTdd renders correctly', () => {
-	render(<GreetTdd />)
-	const textElement = screen.getByText('Hello');
-	expect(textElement).toBeInTheDocument();
+describe('GreetTdd', ()=> {
+	test('renders correctly', () => {
+		render(<GreetTdd />)
+		const textElement = screen.getByText('Hello');
+		expect(textElement).toBeInTheDocument();
+	})
+
+	describe('Nested', () => {
+		test('renders with a name', () => {
+			render(<GreetTdd name='Susan' />)
+			const textElement= screen.getByText('Hello Susan');
+			expect(textElement).toBeInTheDocument();
+		})
+	})
 })
 
-test('GreetTdd renders with a name', () => {
-	render(<GreetTdd name='Susan' />)
-	const textElement= screen.getByText('Hello Susan');
-	expect(textElement).toBeInTheDocument();
-})
+describe('Second describe method', () => {
+		test('renders with the full name', () => {
+			render(<GreetTdd name='Susan Joy' />)
+			const textElement= screen.getByText('Hello Susan Joy');
+			expect(textElement).toBeInTheDocument();
+		})
+	})
