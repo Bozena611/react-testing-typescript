@@ -23,7 +23,7 @@ describe('GreetTdd', ()=> {
 })
 
 describe('Second describe method', () => {
-		test('renders with the full name', () => {
+		it('renders with the full name', () => {
 			render(<GreetTdd name='Susan Joy' />)
 			const textElement= screen.getByText('Hello Susan Joy');
 			expect(textElement).toBeInTheDocument();
