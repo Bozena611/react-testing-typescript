@@ -9,7 +9,7 @@ import { GreetTdd } from "./GreetTdd";
 describe('GreetTdd', ()=> {
 	test('renders correctly', () => {
 		render(<GreetTdd />)
-		const textElement = screen.getByText('Hello');
+		const textElement = screen.getByText(/Hello/); /*change string to regex to pass the change in the test*/
 		expect(textElement).toBeInTheDocument();
 	})
 
