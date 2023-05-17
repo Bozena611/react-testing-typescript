@@ -35,4 +35,45 @@ describe("Counter", () => {
 		expect(countElement).toHaveTextContent("1");
 	});
 
+	// test that number increments to 2 after 2 clicks
+
+		// example 1
+	test("renders a count of 2 after clicking the increment button twice", async () => {
+		user.setup()
+		render(<Counter />)
+		const incrementButton = screen.getByRole("button", {
+			name: "Increment"
+		});
+		await user.click(incrementButton);
+		await user.click(incrementButton);
+		const countElement = screen.getByRole("heading");
+		expect(countElement).toHaveTextContent("2");
+	});
+
+		// example 2
+		test("renders a count of 2 after using dblClick to click twice", async () => {
+		user.setup();
+		render(<Counter />);
+		const incrementButton = screen.getByRole("button", {
+			name: "Increment"
+		});
+		await user.dblClick(incrementButton);
+		const countElement = screen.getByRole("heading");
+		expect(countElement).toHaveTextContent("2");
+	});
+
+		// example 3
+		test("renders a count of 2 after using loop to click twice", async () => {
+		user.setup();
+		render(<Counter />);
+		const incrementButton = screen.getByRole("button", {
+			name: "Increment"
+		});
+		for (let i=0; i<2; i++) {
+      await user.click(incrementButton);
+    }
+		const countElement = screen.getByRole("heading");
+		expect(countElement).toHaveTextContent("2");
+	});
+
 });
